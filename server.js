@@ -1,4 +1,4 @@
-// TO DO: Update if using helpers, e.g., utils/helpers
+// TO DO: Update if using additional helpers, e.g., utils/helpers
 
 const path = require('path');
 const express = require('express');
