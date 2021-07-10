@@ -1,4 +1,4 @@
-const postFormHandler = async (event) => {
+const updateFormHandler = async (event) => {
   event.preventDefault();
 
   const postTitle = document.querySelector('#post-title').value.trim();
@@ -6,12 +6,12 @@ const postFormHandler = async (event) => {
 
   if (postTitle && postContent) {
     
-    console.log('sending POST request to the API endpoint to create a blog post');
+    console.log('sending PUT request to the API endpoint to update a blog post');
     console.log(postTitle);
     console.log(postContent);
 
     const response = await fetch('/api/posts', {
-      method: 'POST',
+      method: 'PUT',
       body: JSON.stringify({ postTitle, postContent }), //req.body.postTitle, req.body.postContent
       headers: { 'Content-Type': 'application/json' },
     });
@@ -25,5 +25,5 @@ const postFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.post-form')
-  .addEventListener('submit', postFormHandler);
+  .querySelector('.update-form')
+  .addEventListener('submit', updateFormHandler);
