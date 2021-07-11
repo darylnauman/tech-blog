@@ -1,5 +1,3 @@
-// TO DO: Update if using additional helpers, e.g., utils/helpers
-
 const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
@@ -17,7 +15,7 @@ const hbs = exphbs.create({});
 
 // Set up sessions
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
