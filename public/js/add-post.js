@@ -5,10 +5,6 @@ const postFormHandler = async (event) => {
   const postContent = document.querySelector('#post-content').value.trim();
 
   if (postTitle && postContent) {
-    
-    console.log('sending POST request to the API endpoint to create a blog post');
-    console.log(postTitle);
-    console.log(postContent);
 
     const response = await fetch('/api/posts', {
       method: 'POST',

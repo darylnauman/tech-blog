@@ -8,16 +8,29 @@
     
     <div class="card-body">
       <p>{{content}}</p>
-    </div>
 
-    {{#if isOwner}}
-      <button class="btn btn-sm btn-primary m-1" style="width: 15vw;" id="updateBtn" data-id="{{id}}">Update Post</button>
-      <button class="btn btn-sm btn-danger m-1" style="width: 15vw;" id="deleteBtn" data-id="{{id}}">Delete Post</button>
-    {{/if}}
-    
-    {{#unless isOwner}}
-      <button class="btn btn-sm btn-primary m-1" style="width: 15vw;" id="commentBtn" data-id="{{id}}">Add Comment</button>
+      {{#if isOwner}}
+        <button class="btn btn-sm btn-primary m-1" style="width: 15vw;" id="updateBtn" data-id="{{id}}">Update Post</button>
+        <button class="btn btn-sm btn-danger m-1" style="width: 15vw;" id="deleteBtn" data-id="{{id}}">Delete Post</button>
+      {{/if}}
+
+      {{#unless isOwner}}
+      <form class="new-comment-form">
+        <div class="mb-3 form-group">
+          <label for="commentInput" class="form-label">Add Comment</label>
+          <input type="text" class="form-control text-primary" id="commentInput" placeholder="Enter comment here">
+          <button type="submit" class="btn btn-sm btn-primary mt-3" style="width: 15vw;" id="commentBtn" data-id="{{id}}">Submit</button>
+        </div>
+      </form>
     {{/unless}}
+
+    </div>   
+    
   </div>
 </div>
-<script src="/js/post.js"></script>
+
+{{#if isOwner}}
+<script src="/js/ownerPost.js"></script>
+{{else}}
+<script src="/js/nonOwnerPost.js"></script>
+{{/if}}

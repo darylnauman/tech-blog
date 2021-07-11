@@ -83,7 +83,7 @@ router.get('/post/:id', async (req, res) => {
 
     post.isOwner = (post.user.id == req.session.user_id);
 
-    console.log(post)
+    // console.log(post)
     
     res.render('post', {
       ...post,
