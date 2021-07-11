@@ -10,17 +10,15 @@ const commentFormHandler = async (event) => {
   console.log(post_id);
 
   if (content) {
-    
-    console.log('sending POST request to the API endpoint to create a comment');
 
     const response = await fetch('/api/comments', {
       method: 'POST',
-      body: JSON.stringify({ content, post_id }), //req.body.content
+      body: JSON.stringify({ content, post_id }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace(`/post/${post_id}`);
     } else {
       alert(response.statusText);
     }

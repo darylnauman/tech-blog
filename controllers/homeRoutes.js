@@ -17,7 +17,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
   const posts = postData.map((post) => post.get({ plain: true }));
 
   res.render('dashboard', { 
-    page_title: 'Techmania (Dashboard)',
     posts, 
     logged_in: req.session.logged_in 
   });
@@ -26,7 +25,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 // GET - Render add-post page
 router.get('/add-post', withAuth, async (req, res) => {
   res.render(`add-post`, {
-    page_title: 'Techmania (add-post)',
     logged_in: req.session.logged_in
   });
 });
@@ -34,7 +32,6 @@ router.get('/add-post', withAuth, async (req, res) => {
 // GET - Render update-post page
 router.get('/update-post', async (req, res) => {
   res.render(`update-post`, {
-    page_title: 'Techmania (update-post)',
     logged_in: req.session.logged_in
   });
 });
@@ -42,7 +39,6 @@ router.get('/update-post', async (req, res) => {
 // GET - Render homepage with all blog posts
 router.get('/', async (req, res) => {
   try {
-    // Get all posts
     const postData = await Post.findAll({
       include: [
         {
@@ -52,12 +48,9 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    // Serialize data
     const posts = postData.map((post) => post.get({ plain: true}));
     
-    // pass serialized data and session flag into template
     res.render('homepage', {
-      page_title: 'Techmania (homepage)',
       posts,
       logged_in: req.session.logged_in,
       user_id: req.session.user_id
@@ -89,11 +82,8 @@ router.get('/post/:id', async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
-
     post.isOwner = (post.user.id == req.session.user_id);
 
-    // console.log(post)
-    
     res.render('post', {
       ...post,
       logged_in: req.session.logged_in,
@@ -110,7 +100,6 @@ router.get('/login', (req, res) => {
     res.redirect('/dashboard');
     return;
   }
-
   res.render('login');
 });
 
