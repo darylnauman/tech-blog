@@ -3,31 +3,26 @@
   {{#if posts.length}}
   
   <div class="row d-flex justify-content-center">
-    <h3 class="text-center">Your Posts</h3>
+    <h3 class="text-center text-primary">Your Posts</h3>
   </div>
 
   <div class="post-list row justify-content-center"> 
     {{#each posts as |post| }} 
-    <div class="card w-75 m-3">
+    <div class="card w-75 my-2">
         
-      <div class="card-header">
-        <a href="/post/{{post.id}}">
-          <h5>{{post.title}}</h5>
-        </a>
-        <h6 class="card-subtitle mb-2 text-muted">Posted by {{post.user.name}}</h6>
-      </div>
+      <a href="/post/{{post.id}}">
+        <h5>{{post.title}}</h5>
+      </a>
 
     </div>
     {{/each}}
   </div>
+
   {{/if}}
-
+    
   <div class="row justify-content-center">
-    <button type="button" class="btn btn-primary w-25" id="addBtn">Add Post</button>
+    <button type="button" class="btn btn-primary btn-sm" style="width: 15vw;" id="addBtn">Add Post</button>
   </div>
-
 </div>
-
-
 
 <script src="./js/dashboard.js"></script>
