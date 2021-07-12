@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-// GET - Dashboard
+// GET - render dashboard with only posts from logged in user
 router.get('/dashboard', withAuth, async (req, res) => {
   const postData = await Post.findAll({
     include: [
@@ -25,13 +25,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 // GET - Render add-post page
 router.get('/add-post', withAuth, async (req, res) => {
   res.render(`add-post`, {
-    logged_in: req.session.logged_in
-  });
-});
-
-// GET - Render update-post page
-router.get('/update-post', async (req, res) => {
-  res.render(`update-post`, {
     logged_in: req.session.logged_in
   });
 });

@@ -22,12 +22,14 @@ router.post('/', withAuth, async (req, res) => {
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.update({
-      title: req.body.postTitle,
-      content: req.body.postContent,
+      title: req.body.title,
+      content: req.body.content,
       user_id: req.session.user_id
-    }, {
+    },
+    {
       where: {
-        id: req.params.id
+        id: req.params.id,
+        user_id: req.session.user_id,
       }
     })
 

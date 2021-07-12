@@ -1,17 +1,27 @@
 const updateButtonHandler = async (event) => {
-  
-  console.log('update button clicked')
+  event.preventDefault();
+
+  const title = document.querySelector('#title').value.trim();
+  const content = document.querySelector('#content').value.trim();
 
   const id = event.target.getAttribute('data-id');
 
-  // TO DO: FIX THIS
-  document.location.replace(`/updatepost/${id}`);
-  
+  if (title && content) {
+    const response = await fetch(`/api/posts/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ title, content, id }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace(`/dashboard`);
+    } else {
+      alert(response.statusText);
+    }
+  }
 };
 
 const delButtonHandler = async (event) => {
-  
-  console.log('del button clicked')
 
   const id = event.target.getAttribute('data-id');
 
@@ -32,4 +42,4 @@ document
 
 document
   .querySelector("#updateBtn")
-  .addEventListener('click', updateButtonHandler);  
+  .addEventListener('click', updateButtonHandler);

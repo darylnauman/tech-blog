@@ -4,19 +4,41 @@
   
   <div class="row align-items-center card my-3 text-primary">
     
+    {{!-- If not the post author simply display the post as a card --}}
+    {{#unless isOwner}}
     <div class="card-header">
       <h4 class="text-primary">{{title}}</h4>
       <h6 class="card-subtitle text-muted">Posted by {{user.name}} on {{date}}</h6>
     </div>
-    
     <div class="card-body">
       <p>{{content}}</p>
-    </div> 
+    </div>
+    {{/unless}}
+
+    {{!-- If the post author create a form and fill fields with data from database to edit if desired --}}
+    {{#if isOwner}}
+    
+    <form>
+      <div class="m-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control text-primary" id="title" value="{{title}}">
+      </div>
+
+      <div class="m-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control text-primary" aria-label="With textarea" id="content">{{content}}</textarea>
+      </div>
+
+      <button class="btn btn-sm btn-primary m-1" style="width: 15vw;" id="updateBtn" data-id="{{id}}">Update Post</button>
+      <button class="btn btn-sm btn-danger m-1" style="width: 15vw;" id="deleteBtn" data-id="{{id}}">Delete Post</button>
+    </form>
+    {{/if}}
 
   </div>
 
+  {{!-- Comments --}}
   <div class="row align-items-center card my-3 text-primary">
-    
+
     <div class="card-header">
       <h4 class="text-primary">Comments</h4>
     </div>
@@ -29,11 +51,6 @@
     </div> 
 
   </div>
-
-  {{#if isOwner}}
-    <button class="btn btn-sm btn-primary m-1" style="width: 15vw;" id="updateBtn" data-id="{{id}}">Update Post</button>
-    <button class="btn btn-sm btn-danger m-1" style="width: 15vw;" id="deleteBtn" data-id="{{id}}">Delete Post</button>
-  {{/if}}
 
   {{#unless isOwner}}
   <form class="new-comment-form">
