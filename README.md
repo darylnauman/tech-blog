@@ -39,7 +39,7 @@ This product is under the MIT License.
 
 ## Links
 - [GitHub repository](https://github.com/darylnauman/tech-blog)
-- [Deployed application on Heroku]()
+- [Deployed application on Heroku](https://polar-badlands-86538.herokuapp.com/)
 
 ## Screenshots
 The images below show the application.
