@@ -2,26 +2,26 @@
   {
     "name": "Sally",
     "email": "sally@outlook.com",
-    "password": "SS"
+    "password": "password12345"
   },
   {
     "name": "Lenard",
     "email": "lenard@outlook.com",
-    "password": "LL"
+    "password": "password12345"
   },
   {
     "name": "Anthony",
     "email": "anthony@outlook.com",
-    "password": "AA"
+    "password": "password12345"
   },
   {
     "name": "Jordan",
     "email": "jordan@outlook.com",
-    "password": "JJ"
+    "password": "password12345"
   },
   {
     "name": "Blake",
     "email": "blake@outlook.com",
-    "password": "BB"
+    "password": "password12345"
   }
 ]
